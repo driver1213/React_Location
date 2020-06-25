@@ -1,26 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// import React, { Component } from 'react'
+// import H1 from './components/H1'
+// import H2 from './components/H2'
+// import H3 from './components/H3'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+// class App extends Component {
 
-export default App;
+//   constructor(props){
+//     super(props)
+
+//     this.state = {
+//       clicks: 0
+//     }
+//   }
+
+//   reset = () =>{
+//     this.setState({
+//       clicks: 0
+//     })
+//   }
+
+//   increment = () => {
+//     this.setState({
+//       clicks: this.state.clicks +1
+//     })
+//   }
+
+//   render() {
+//     return (
+//       <div style={{width: "400px", marginLeft: "auto", marginRight: "auto", paddingTop: "40px"}} >
+
+//         <H1 clicks={this.state.clicks} />
+
+//         <H2 onReset={this.reset} />
+
+//         <H3 onClickProp={this.increment} />
+
+//       </div>
+//     )
+//   }
+// }
+
+// export default App
+
