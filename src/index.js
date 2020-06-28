@@ -1,30 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import App from './App';
-// import BaseLayout from './components/layout/BaseLayout'
-// import 'bootstrap/dist/css/bootstrap.min.css';
-// import {BrowserRouter, Route, Switch} from 'react-router-dom'
-// import ProjectManagement from './components/projectman/ProjectManagement';
-// import TodoList from './components/todo/TodoList';
-
+import SeasonDisplay from './SeasonDisplay'
 
 class App extends React.Component {
-  constructor(props) {
-    super(props)
+  state = { lat: null, errorMessage: '' }
 
-    this.state = {
-      lat: null
-    }
+  componentDidMount() {
+    window.navigator.geolocation.getCurrentPosition(
+      position => this.setState({ lat: position.coords.latitude }), 
+      err => this.setState({ errorMessage: err.message })
+    )
   }
 
-  //we have to define render!
+
+  //React says we have to define render!
   render() {
-    window.navigator.geolocation.getCurrentPosition(
-      (position) => console.log(position), 
-      (err) => console.log(err)
-    )
-  
-    return <div>Latitude:</div>
+    if (this.state.errorMessage && !this.state.lat) {
+      return <div>Error: {this.state.errorMessage}</div>
+    }
+
+    if (!this.state.errorMessage && this.state.lat) {
+      return <SeasonDisplay lat={this.state.lat} />
+    }
+
+    return <div>Loading...</div>
   }
 }
 
@@ -33,14 +32,3 @@ ReactDOM.render(
   ,
   document.querySelector('#root')
 );
-
-
-{/* <BrowserRouter>
-    <BaseLayout>
-      <Switch>
-        <Route exact path="/" component={App} />
-        <Route exact path="/todo" component={TodoList} />
-        <Route exact path="/projects" component={ProjectManagement} />
-      </Switch>
-    </BaseLayout>
-  </BrowserRouter> */}
